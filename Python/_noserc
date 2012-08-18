@@ -1,0 +1,6 @@
+[nosetests]
+with-doctest=1
+doctest-extension=.txt
+
+verbosity=3
+nocapture=1

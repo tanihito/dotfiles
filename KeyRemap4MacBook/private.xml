@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<root>
+	<item>
+    <name>Emacs Mode with EISUU Prefix</name>
+
+    <item>
+      <name>Change EISUU Key</name>
+      <item>
+        <name>EISUU to Extra1 (except Terminal)</name>
+        <appendix>(+ When you type EISUU only, send EISUU)</appendix>
+        <identifier>private.remap.eisuu2extra1_eisuu_ex_term</identifier>
+        <not>TERMINAL</not>
+        <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, KeyCode::VK_MODIFIER_EXTRA1, KeyCode::JIS_EISUU</autogen>
+      </item>
+      <item>
+      	<name>EISUU to Control_L (only in Terminal)</name>
+        <appendix>(+ When you type EISUU only, send EISUU)</appendix>
+        <identifier>private.remap.eisuu2controlL_term</identifier>
+        <only>TERMINAL</only>
+        <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, KeyCode::CONTROL_L, KeyCode::JIS_EISUU</autogen>
+      </item>
+    </item>
+
+    <item>
+      <name>Extra1+D to Forward Delete</name>
+      <identifier>private.option.emacsmode_controlD</identifier>
+      <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::EXTRA1, KeyCode::FORWARD_DELETE</autogen>
+    </item>
+
+    <item>
+      <name>Extra1+H to Delete</name>
+      <identifier>private.option.emacsmode_controlH</identifier>
+      <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA1, KeyCode::DELETE</autogen>
+    </item>
+
+    <item>
+      <name>Extra1+I to Tab</name>
+      <identifier>private.option.emacsmode_controlI</identifier>
+      <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::EXTRA1, KeyCode::TAB</autogen>
+    </item>
+
+    <item>
+      <name>Extra1+[ to Escape</name>
+      <identifier>private.option.emacsmode_controlLeftbracket</identifier>
+      <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, ModifierFlag::EXTRA1, KeyCode::ESCAPE</autogen>
+    </item>
+
+    <item>
+      <name>Extra1+J to Return</name>
+      <identifier>private.remap.controlJ2return</identifier>
+      <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA1, KeyCode::RETURN</autogen>
+    </item>
+
+    <item>
+      <name>Extra1+PNBF to Up/Down/Left/Right</name>
+      <identifier>private.option.emacsmode_controlPNBF</identifier>
+      <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::EXTRA1, KeyCode::CURSOR_UP</autogen>
+      <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::EXTRA1, KeyCode::CURSOR_DOWN</autogen>
+      <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT</autogen>
+      <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::EXTRA1, KeyCode::CURSOR_RIGHT</autogen>
+    </item>
+
+    <item>
+      <name>Extra1+V to PageDown</name>
+      <identifier>private.option.emacsmode_controlV</identifier>
+      <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::EXTRA1, KeyCode::PAGEDOWN</autogen>
+    </item>
+
+    <item>
+      <name>Extra1+Q to PageUp</name>
+      <identifier>private.option.emacsmode_ex_controlQ</identifier>
+      <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::EXTRA1, KeyCode::PAGEUP</autogen>
+    </item>
+
+    <item>
+      <name>Extra1+Y to Command+V</name>
+      <identifier>private.option.emacsmode_controlY</identifier>
+      <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <autogen>--KeyToKey-- KeyCode::Y, ModifierFlag::EXTRA1, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+    </item>
+
+    <item>
+      <name>Extra1+AE to Command+Left/Right</name>
+      <identifier>private.option.emacsmode_controlAE</identifier>
+      <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::EXTRA1, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+    </item>
+
+    <item>
+      <name>Extra1+K to Command+Shift+Right,Command+X</name>
+      <identifier>private.option.emacsmode_controlK</identifier>
+      <block>
+        <not>{{EMACS_MODE_IGNORE_APPS}}, DICTIONARY</not>
+        <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA1 | ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+      </block>
+      <block>
+        <only>DICTIONARY</only>
+        <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA1 | ModifierFlag::NONE, KeyCode::E, VK_CONTROL | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+      </block>
+    </item>
+
+    <item>
+      <name>Extra1+W to Command+X</name>
+      <identifier>private.option.emacsmode_controlW</identifier>
+      <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::EXTRA1, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+    </item>
+
+    <item>
+      <name>Extra1+/ to Command_Z</name>
+      <identifier>private.option.emacsmode_controlSlash</identifier>
+      <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+    </item>
+
+    <item>
+      <name>Extra1+_ to Command_Shift_Z</name>
+      <identifier>private.option.emacsmode_controlUnderscore</identifier>
+      <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+    </item>
+
+    <item>
+      <name>Use Extra1+Space as MarkSet</name>
+      <item>
+        <!-- MarkSet Mode Core -->
+        <name>MarkSet Mode detail</name>
+        <appendix>Extra1+W to Command_L+X</appendix>
+        <appendix>Option+W to Command_L+C</appendix>
+        <appendix>Extra1+G to turn off MarkSet</appendix>
+        <appendix>Extra1+Space to turn off MarkSet</appendix>
+        <identifier vk_config="true">notsave.private.emacsmode_ex_controlSpace_core</identifier>
+        <autogen>--ShowStatusMessage-- MarkSet</autogen>
+        <autogen>--KeyToKey-- KeyCode::W,     ModifierFlag::EXTRA1 | 
+          ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::X, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_private_emacsmode_ex_controlSpace_core</autogen>
+        <autogen>--KeyToKey-- KeyCode::W,     VK_OPTION  | 
+          ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::C, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_private_emacsmode_ex_controlSpace_core</autogen>
+        <autogen>--KeyToKey-- KeyCode::G,     ModifierFlag::EXTRA1 | 
+          ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_private_emacsmode_ex_controlSpace_core</autogen>
+        <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::EXTRA1 | 
+          ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_private_emacsmode_ex_controlSpace_core</autogen>
+      </item>
+      <item>
+        <name>Enable Extra1+Space</name>
+        <identifier>private.option.emacsmode_ex_controlSpace</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::EXTRA1 | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_ON, KeyCode::VK_CONFIG_FORCE_ON_notsave_private_emacsmode_ex_controlSpace_core</autogen>
+      </item> 
+    </item>
+
+	</item>
+</root>

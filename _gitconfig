@@ -1,0 +1,10 @@
+[color]
+	ui = auto
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	ls = ls-files
+	ci = commit
+	vlog = log --pretty=format:\"%C(yellow)%h%Creset: %s%C(green)%d%Creset - %cr, %an\" --abbrev-commit --date=relative
+	glog = log --pretty=format:\"%C(yellow)%h%Creset: %s%C(green)%d%Creset - %cr, %an\" --abbrev-commit --date=relative --graph

@@ -1,0 +1,33 @@
+defencoding utf-8
+vbell off
+
+# Change escape key
+escape ^Tt
+
+# Do not show startup message
+startup_message off
+
+# Show a list of windows
+hardstatus alwayslastline "[%02c] %`%-w%{=b bw}%n %t%{-}%+w"
+
+# Remove unnecessary functions
+bind s
+bind ^s
+bind x
+bind ^x
+bind f
+bind ^f
+
+# Emacs keybind
+bind -c REGION 2 split
+bind -c REGION o focus
+bind -c REGION 1 only
+bind -c REGION 0 remove
+bind x command -c REGION
+bind ^k kill
+
+# Erase background with current bg color
+defbce "on"
+
+# Do not use 'screen-bce'
+term xterm-256color
