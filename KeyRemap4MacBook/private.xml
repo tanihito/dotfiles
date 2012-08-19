@@ -138,6 +138,7 @@
           <name>MarkSet Mode detail</name>
           <appendix>Extra1+W to Command_L+X</appendix>
           <appendix>Option+W to Command_L+C</appendix>
+          <appendix>Extra1+D to Delete</appendix>
           <appendix>Extra1+G to turn off MarkSet</appendix>
           <appendix>Extra1+Space to turn off MarkSet</appendix>
           <identifier vk_config="true">notsave.private.emacsmode_ex_controlSpace_core</identifier>
@@ -146,6 +147,8 @@
             ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::X, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_private_emacsmode_ex_controlSpace_core</autogen>
           <autogen>--KeyToKey-- KeyCode::W,     VK_OPTION  |
             ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::C, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_private_emacsmode_ex_controlSpace_core</autogen>
+          <autogen>--KeyToKey-- KeyCode::D,     ModifierFlag::EXTRA1 |
+            ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::FORWARD_DELETE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_private_emacsmode_ex_controlSpace_core</autogen>
           <autogen>--KeyToKey-- KeyCode::G,     ModifierFlag::EXTRA1 |
             ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_private_emacsmode_ex_controlSpace_core</autogen>
           <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::EXTRA1 |
@@ -164,6 +167,7 @@
           <name>MarkSet Mode detail</name>
           <appendix>Extra1+W to Command_L+X</appendix>
           <appendix>Option+W to Command_L+C</appendix>
+          <appendix>Extra1+D to Delete</appendix>
           <appendix>Extra1+G to turn off MarkSet</appendix>
           <appendix>Extra1+@ to turn off MarkSet</appendix>
           <identifier vk_config="true">notsave.private.emacsmode_ex_controlAtmark_core</identifier>
@@ -172,6 +176,8 @@
             ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::X, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_private_emacsmode_ex_controlAtmark_core</autogen>
           <autogen>--KeyToKey-- KeyCode::W,          VK_OPTION |
             ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::C, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_private_emacsmode_ex_controlAtmark_core</autogen>
+          <autogen>--KeyToKey-- KeyCode::D,     ModifierFlag::EXTRA1 |
+            ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::FORWARD_DELETE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_private_emacsmode_ex_controlSpace_core</autogen>
           <autogen>--KeyToKey-- KeyCode::G,          ModifierFlag::EXTRA1 |
             ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_private_emacsmode_ex_controlAtmark_core</autogen>
           <autogen>--KeyToKey-- KeyCode::JIS_ATMARK, ModifierFlag::EXTRA1 |
