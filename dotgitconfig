@@ -1,10 +1,27 @@
 [color]
-	ui = auto
+    ui = auto
+[push]
+    default = tracking
 [alias]
-	st = status
-	co = checkout
-	br = branch
-	ls = ls-files
-	ci = commit
-	vlog = log --pretty=format:\"%C(yellow)%h%Creset: %s%C(green)%d%Creset - %cr, %an\" --abbrev-commit --date=relative
-	glog = log --pretty=format:\"%C(yellow)%h%Creset: %s%C(green)%d%Creset - %cr, %an\" --abbrev-commit --date=relative --graph
+    st = status
+    sh = show
+    ft = fetch
+    up = pull --rebase
+    ad = add
+    co = checkout
+    ci = commit
+    cim = commit -m
+    unci = reset --soft HEAD~
+    amend = commit --amend
+    br = branch
+    ba = branch -a
+    ls = ls-files
+    df = diff
+    dc = diff --cached
+    d1 = diff HEAD~
+    d2 = diff HEAD~~
+    d3 = diff HEAD~~~
+    d4 = diff HEAD~~~~
+    d5 = diff HEAD~~~~~
+    vlog = log --pretty=format:\"%C(yellow)%h%Creset: %s%C(green)%d%Creset - %cr, %an\" --abbrev-commit --date=relative
+    glog = log --pretty=format:\"%C(yellow)%h%Creset: %s%C(green)%d%Creset - %cr, %an\" --abbrev-commit --date=relative --graph
