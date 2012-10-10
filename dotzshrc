@@ -55,17 +55,20 @@ export EDITOR=vi
 ## Theme and appearance
 #
 autoload -Uz colors
+autoload -Uz vcs_info
 colors
 setopt prompt_subst
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':vcs_info:*' formats '[%b]'
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
 
-PROMPT=$'%{$fg_bold[green]%}%n@%m:%~%{$reset_color%} %{$fg[blue]%}%D{[%I:%M:%S]} %{$reset_color%}$(git_prompt_info)\
+PROMPT=$'%{$fg_bold[green]%}%n@%m:%~%{$reset_color%} %{$fg[blue]%}%D{[%I:%M:%S]} %{$reset_color%}%1(v|%F{green}%1v%f|)\
 %{$fg_bold[blue]%}%#%{$reset_color%} '
-
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}["
-ZSH_THEME_GIT_PROMPT_SUFFIX="]%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}*%{$fg[green]%}"
-ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 
 ## Directories
@@ -145,23 +148,6 @@ setopt ignoreeof         # prohibit Ctrl-D to logout
 ## Functions
 #
 function chpwd() { ls }
-
-function git_prompt_info() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
-}
-
-parse_git_dirty() {
-  local SUBMODULE_SYNTAX=''
-  if [[ $POST_1_7_2_GIT -gt 0 ]]; then
-        SUBMODULE_SYNTAX="--ignore-submodules=dirty"
-  fi
-  if [[ -n $(git status -s ${SUBMODULE_SYNTAX}  2> /dev/null) ]]; then
-    echo "$ZSH_THEME_GIT_PROMPT_DIRTY"
-  else
-    echo "$ZSH_THEME_GIT_PROMPT_CLEAN"
-  fi
-}
 
 
 ## load user .zshrc configuration file
