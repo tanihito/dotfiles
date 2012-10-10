@@ -67,7 +67,7 @@ precmd () {
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
 
-PROMPT=$'%{$fg_bold[green]%}%n@%m:%~%{$reset_color%} %{$fg[blue]%}%D{[%I:%M:%S]} %{$reset_color%}%1(v|%F{green}%1v%f|)\
+PROMPT=$'%{$fg_bold[green]%}%n@%m:%~%{$reset_color%} %{$fg[blue]%}%D{[%T]} %{$reset_color%}%1(v|%F{green}%1v%f|)\
 %{$fg_bold[blue]%}%#%{$reset_color%} '
 
 
