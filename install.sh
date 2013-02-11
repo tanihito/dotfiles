@@ -2,8 +2,11 @@
 
 IGNORE_FILES=("")
 COPY_FILES=("dotgitconfig" "dotssh" "dotemacs.d")
+BACKUP_DIR=${HOME}/backup
 
 function main {
+  mkdir ${BACKUP_DIR}
+
   for name in `find . -name "dot*" -maxdepth 1 | xargs -n 1 basename`; do
 
     for ignore_file in ${IGNORE_FILES}; do
@@ -34,8 +37,8 @@ function make_copy {
     cp -rn "$PWD/$1" "${HOME}/${target}"
   else
     backup_file=${name}.`date +%Y%m%d%H%M%S`
-    echo "Found ${target}. Backing up to ${HOME}/backup/${backup_file}."
-    mv "${HOME}/${target}" "${HOME}/backup/${backup_file}"
+    echo "Found ${target}. Backing up to ${BACKUP_DIR}/${backup_file}."
+    mv "${HOME}/${target}" "${BACKUP_DIR}/${backup_file}"
     cp -rn "$PWD/$1" "${HOME}/${target}"
   fi
 }
@@ -50,8 +53,8 @@ function make_symlink {
     ln -sf "$PWD/$1" "${HOME}/${target}"
   else
     backup_file=${name}.`date +%Y%m%d%H%M%S`
-    echo "${target} exists but is not a symlink. Backing up to ${HOME}/backup/${backup_file}."
-    mv "${HOME}/${target}" "${HOME}/backup/${backup_file}"
+    echo "${target} exists but is not a symlink. Backing up to ${BACKUP_DIR}/${backup_file}."
+    mv "${HOME}/${target}" "${BACKUP_DIR}/${backup_file}"
     ln -s  "$PWD/$1" "${HOME}/${target}"
   fi
 }
