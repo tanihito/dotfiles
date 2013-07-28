@@ -189,6 +189,97 @@
         <autogen>--KeyToKey-- KeyCode::JIS_ATMARK, ModifierFlag::EXTRA1 | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_ON, KeyCode::VK_CONFIG_FORCE_ON_notsave_private_emacsmode_ex_controlAtmark_core</autogen>
       </item>
     </item>
-
   </item>
+
+  <item>
+    <name>Vi Mode with EISUU Prefix</name>
+    <identifier>vimode_with_eisuu_prefix</identifier>
+
+    <!-- Set Modifier -->
+    <block>
+      <not>TERMINAL</not>
+      <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, KeyCode::VK_MODIFIER_EXTRA1, KeyCode::JIS_EISUU</autogen>
+    </block>
+    <block>
+      <only>TERMINAL</only>
+      <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, KeyCode::CONTROL_L, KeyCode::JIS_EISUU</autogen>
+    </block>
+
+    <item>
+      <block>
+        <!-- HJKL -->
+        <autogen>__KeyToKey__ KeyCode::H, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::J, ModifierFlag::EXTRA1, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::K, ModifierFlag::EXTRA1, KeyCode::CURSOR_UP</autogen>
+        <autogen>__KeyToKey__ KeyCode::L, ModifierFlag::EXTRA1, KeyCode::CURSOR_RIGHT</autogen>
+
+        <!-- 0 -->
+        <autogen>__KeyToKey__ KeyCode::KEY_0, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+
+        <!-- F, B -->
+        <autogen>__KeyToKey__ KeyCode::F, ModifierFlag::EXTRA1, KeyCode::PAGEDOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::B, ModifierFlag::EXTRA1, KeyCode::PAGEUP</autogen>
+
+        <!-- B, E -->
+        <autogen>__KeyToKey__ KeyCode::B, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::E, ModifierFlag::EXTRA1, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
+
+        <!-- G -->
+        <autogen>
+          __KeyToKey__
+          KeyCode::G, ModifierFlag::EXTRA1 | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+          KeyCode::CURSOR_DOWN, ModifierFlag::COMMAND_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::G, ModifierFlag::EXTRA1,
+          KeyCode::CURSOR_UP, ModifierFlag::COMMAND_L
+        </autogen>
+
+        <!-- SLASH, N -->
+        <autogen>__KeyToKey__ KeyCode::SLASH, ModifierFlag::EXTRA1, KeyCode::F, ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::N, ModifierFlag::EXTRA1, KeyCode::G, ModifierFlag::COMMAND_L</autogen>
+
+        <!-- X -->
+        <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::EXTRA1, KeyCode::FORWARD_DELETE</autogen>
+        <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::EXTRA1 | ModifierFlag::SHIFT_L, KeyCode::DELETE</autogen>
+        <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::EXTRA1 | ModifierFlag::SHIFT_R, KeyCode::DELETE</autogen>
+
+        <!-- D -->
+        <autogen>
+          __KeyToKey__
+          KeyCode::D, ModifierFlag::EXTRA1,
+          KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
+          KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L,
+          KeyCode::X, ModifierFlag::COMMAND_L,
+          KeyCode::CURSOR_LEFT
+        </autogen>
+
+        <!-- Y -->
+        <autogen>
+          __KeyToKey__
+          KeyCode::Y, ModifierFlag::EXTRA1,
+          KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
+          KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L,
+          KeyCode::C, ModifierFlag::COMMAND_L,
+          KeyCode::CURSOR_LEFT
+        </autogen>
+
+        <!-- P -->
+        <autogen>
+          __KeyToKey__
+          KeyCode::P, ModifierFlag::EXTRA1,
+          KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
+          KeyCode::V, ModifierFlag::COMMAND_L
+        </autogen>
+
+        <!-- R: Redo -->
+        <autogen>
+          __KeyToKey__
+          KeyCode::R, ModifierFlag::EXTRA1,
+          KeyCode::Z, ModifierFlag::SHIFT_L | ModifierFlag::COMMAND_L
+        </autogen>
+      </block>
+   </item>
+ </item>
 </root>
