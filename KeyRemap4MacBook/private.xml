@@ -1,24 +1,38 @@
 <?xml version="1.0"?>
 <root>
+  <appdef>
+    <appname>SUBLIME2</appname>
+    <equal>com.sublimetext.2</equal>
+  </appdef>
+
+  <replacementdef>
+    <replacementname>EMACS_MODE_IGNORE_APPS</replacementname>
+    <replacementvalue>
+      ECLIPSE,
+      EMACS,
+      REMOTEDESKTOPCONNECTION,
+      TERMINAL,
+      VI,
+      VIRTUALMACHINE,
+      X11,
+      SUBLIME2,
+    </replacementvalue>
+  </replacementdef>
+
   <item>
     <name>Emacs Mode with EISUU Prefix</name>
 
     <item>
-      <name>Change EISUU Key</name>
-      <item>
-        <name>EISUU to Extra1 (except Terminal)</name>
-        <appendix>(+ When you type EISUU only, send EISUU)</appendix>
-        <identifier>private.remap.eisuu2extra1_eisuu_ex_term</identifier>
-        <not>TERMINAL</not>
+      <name>Set EISUU to Extra1</name>
+      <identifier>private.remap.eisuu2extra1_eisuu_ex_term</identifier>
+      <block>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
         <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, KeyCode::VK_MODIFIER_EXTRA1, KeyCode::JIS_EISUU</autogen>
-      </item>
-      <item>
-      	<name>EISUU to Control_L (only in Terminal)</name>
-        <appendix>(+ When you type EISUU only, send EISUU)</appendix>
-        <identifier>private.remap.eisuu2controlL_term</identifier>
-        <only>TERMINAL</only>
+      </block>
+      <block>
+        <only>{{EMACS_MODE_IGNORE_APPS}}</only>
         <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, KeyCode::CONTROL_L, KeyCode::JIS_EISUU</autogen>
-      </item>
+      </block>
     </item>
 
     <item>
@@ -45,8 +59,16 @@
     <item>
       <name>Extra1+[ to Escape</name>
       <identifier>private.option.emacsmode_controlLeftbracket</identifier>
-      <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-      <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, ModifierFlag::EXTRA1, KeyCode::ESCAPE</autogen>
+
+      <block>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, ModifierFlag::EXTRA1, KeyCode::ESCAPE</autogen>
+      </block>
+      <block>
+        <only>{{EMACS_MODE_IGNORE_APPS}}</only>
+        <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, ModifierFlag::CONTROL_L, KeyCode::ESCAPE</autogen>
+        <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, ModifierFlag::CONTROL_R, KeyCode::ESCAPE</autogen>
+      </block>
     </item>
 
     <item>
@@ -127,83 +149,37 @@
       <identifier>private.option.emacsmode_controlUnderscore</identifier>
       <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
     </item>
-
-    <item>
-      <name>Use MarkSet</name>
-
-      <item>
-        <name>Use Extra1+Space as MarkSet</name>
-
-        <item>
-          <name>MarkSet Mode detail</name>
-          <appendix>Extra1+W to Command_L+X</appendix>
-          <appendix>Option+W to Command_L+C</appendix>
-          <appendix>Extra1+D to Delete</appendix>
-          <appendix>Extra1+G to turn off MarkSet</appendix>
-          <appendix>Extra1+Space to turn off MarkSet</appendix>
-          <identifier vk_config="true">notsave.private.emacsmode_ex_controlSpace_core</identifier>
-          <autogen>--ShowStatusMessage-- MarkSet</autogen>
-          <autogen>--KeyToKey-- KeyCode::W,     ModifierFlag::EXTRA1 |
-            ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::X, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_private_emacsmode_ex_controlSpace_core</autogen>
-          <autogen>--KeyToKey-- KeyCode::W,     VK_OPTION  |
-            ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::C, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_private_emacsmode_ex_controlSpace_core</autogen>
-          <autogen>--KeyToKey-- KeyCode::D,     ModifierFlag::EXTRA1 |
-            ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::FORWARD_DELETE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_private_emacsmode_ex_controlSpace_core</autogen>
-          <autogen>--KeyToKey-- KeyCode::G,     ModifierFlag::EXTRA1 |
-            ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_private_emacsmode_ex_controlSpace_core</autogen>
-          <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::EXTRA1 |
-            ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_private_emacsmode_ex_controlSpace_core</autogen>
-        </item>
-
-        <identifier>private.option.emacsmode_ex_controlSpace</identifier>
-        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-        <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::EXTRA1 | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_ON, KeyCode::VK_CONFIG_FORCE_ON_notsave_private_emacsmode_ex_controlSpace_core</autogen>
-      </item>
-
-      <item>
-        <name>Use Extra1+@ as MarkSet</name>
-
-        <item>
-          <name>MarkSet Mode detail</name>
-          <appendix>Extra1+W to Command_L+X</appendix>
-          <appendix>Option+W to Command_L+C</appendix>
-          <appendix>Extra1+D to Delete</appendix>
-          <appendix>Extra1+G to turn off MarkSet</appendix>
-          <appendix>Extra1+@ to turn off MarkSet</appendix>
-          <identifier vk_config="true">notsave.private.emacsmode_ex_controlAtmark_core</identifier>
-          <autogen>--ShowStatusMessage-- MarkSet</autogen>
-          <autogen>--KeyToKey-- KeyCode::W,          ModifierFlag::EXTRA1 |
-            ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::X, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_private_emacsmode_ex_controlAtmark_core</autogen>
-          <autogen>--KeyToKey-- KeyCode::W,          VK_OPTION |
-            ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::C, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_private_emacsmode_ex_controlAtmark_core</autogen>
-          <autogen>--KeyToKey-- KeyCode::D,     ModifierFlag::EXTRA1 |
-            ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::FORWARD_DELETE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_private_emacsmode_ex_controlSpace_core</autogen>
-          <autogen>--KeyToKey-- KeyCode::G,          ModifierFlag::EXTRA1 |
-            ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_private_emacsmode_ex_controlAtmark_core</autogen>
-          <autogen>--KeyToKey-- KeyCode::JIS_ATMARK, ModifierFlag::EXTRA1 |
-            ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_private_emacsmode_ex_controlAtmark_core</autogen>
-        </item>
-
-        <identifier>private.option.emacsmode_ex_controlAtmark</identifier>
-        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-        <autogen>--KeyToKey-- KeyCode::JIS_ATMARK, ModifierFlag::EXTRA1 | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_ON, KeyCode::VK_CONFIG_FORCE_ON_notsave_private_emacsmode_ex_controlAtmark_core</autogen>
-      </item>
-    </item>
   </item>
 
   <item>
-    <name>Vi Mode with EISUU Prefix</name>
-    <identifier>vimode_with_eisuu_prefix</identifier>
+    <name>Vi Mode with prefix key</name>
+    <identifier>vimode_with_prefix</identifier>
 
-    <!-- Set Modifier -->
-    <block>
-      <not>TERMINAL</not>
-      <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, KeyCode::VK_MODIFIER_EXTRA1, KeyCode::JIS_EISUU</autogen>
-    </block>
-    <block>
-      <only>TERMINAL</only>
-      <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, KeyCode::CONTROL_L, KeyCode::JIS_EISUU</autogen>
-    </block>
+    <item>
+      <name>Set KANA as prefix key</name>
+      <identifier>vimmode_with_prefix.kana</identifier>
+      <block>
+        <not>TERMINAL</not>
+        <autogen>--KeyOverlaidModifier-- KeyCode::JIS_KANA, KeyCode::VK_MODIFIER_EXTRA1, KeyCode::JIS_KANA</autogen>
+      </block>
+      <block>
+        <only>TERMINAL</only>
+        <autogen>--KeyOverlaidModifier-- KeyCode::JIS_KANA, KeyCode::CONTROL_L, KeyCode::JIS_KANA</autogen>
+      </block>
+    </item>
+
+    <item>
+      <name>Set EISUU as prefix key</name>
+      <identifier>vimmode_with_prefix.eisuu</identifier>
+      <block>
+        <not>TERMINAL</not>
+        <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, KeyCode::VK_MODIFIER_EXTRA1, KeyCode::JIS_EISUU</autogen>
+      </block>
+      <block>
+        <only>TERMINAL</only>
+        <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, KeyCode::CONTROL_L, KeyCode::JIS_EISUU</autogen>
+      </block>
+    </item>
 
     <item>
       <block>
@@ -216,13 +192,9 @@
         <!-- 0 -->
         <autogen>__KeyToKey__ KeyCode::KEY_0, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
 
-        <!-- F, B -->
+        <!-- F/B: PageUp/Down -->
         <autogen>__KeyToKey__ KeyCode::F, ModifierFlag::EXTRA1, KeyCode::PAGEDOWN</autogen>
         <autogen>__KeyToKey__ KeyCode::B, ModifierFlag::EXTRA1, KeyCode::PAGEUP</autogen>
-
-        <!-- B, E -->
-        <autogen>__KeyToKey__ KeyCode::B, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::E, ModifierFlag::EXTRA1, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
 
         <!-- G -->
         <autogen>
@@ -236,16 +208,19 @@
           KeyCode::CURSOR_UP, ModifierFlag::COMMAND_L
         </autogen>
 
-        <!-- SLASH, N -->
+        <!-- SLASH, N: Search -->
         <autogen>__KeyToKey__ KeyCode::SLASH, ModifierFlag::EXTRA1, KeyCode::F, ModifierFlag::COMMAND_L</autogen>
         <autogen>__KeyToKey__ KeyCode::N, ModifierFlag::EXTRA1, KeyCode::G, ModifierFlag::COMMAND_L</autogen>
 
-        <!-- X -->
+        <!-- X: Delete -->
         <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::EXTRA1, KeyCode::FORWARD_DELETE</autogen>
         <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::EXTRA1 | ModifierFlag::SHIFT_L, KeyCode::DELETE</autogen>
         <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::EXTRA1 | ModifierFlag::SHIFT_R, KeyCode::DELETE</autogen>
 
-        <!-- D -->
+        <!-- M: Return -->
+        <autogen>__KeyToKey__ KeyCode::M, ModifierFlag::EXTRA1, KeyCode::RETURN</autogen>
+
+        <!-- D: Cut -->
         <autogen>
           __KeyToKey__
           KeyCode::D, ModifierFlag::EXTRA1,
@@ -255,7 +230,7 @@
           KeyCode::CURSOR_LEFT
         </autogen>
 
-        <!-- Y -->
+        <!-- Y: Copy -->
         <autogen>
           __KeyToKey__
           KeyCode::Y, ModifierFlag::EXTRA1,
@@ -265,12 +240,21 @@
           KeyCode::CURSOR_LEFT
         </autogen>
 
-        <!-- P -->
+        <!-- P: Paste -->
         <autogen>
           __KeyToKey__
           KeyCode::P, ModifierFlag::EXTRA1,
           KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
           KeyCode::V, ModifierFlag::COMMAND_L
+        </autogen>
+
+        <!-- U: Undo -->
+       <autogen>
+          __KeyToKey__
+          KeyCode::U, ModifierFlag::EXTRA1,
+          KeyCode::Z, ModifierFlag::COMMAND_L,
+          KeyCode::CURSOR_LEFT,
+          KeyCode::CURSOR_RIGHT
         </autogen>
 
         <!-- R: Redo -->
@@ -281,5 +265,11 @@
         </autogen>
       </block>
    </item>
- </item>
+  </item>
+
+  <item>
+    <name>Ctrl+C to ESC</name>
+    <identifier>remap.ctrl_c2esc</identifier>
+    <autogen>__KeyToKey__ KeyCode::C, ModifierFlag::CONTROL_L, KeyCode::ESCAPE</autogen>
+  </item>
 </root>
