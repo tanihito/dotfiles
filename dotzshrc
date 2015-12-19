@@ -147,17 +147,10 @@ zstyle ':chpwd:*' recent-dirs-max 5000
 zstyle ':chpwd:*' recent-dirs-default yes
 zstyle ':completion:*' recent-dirs-insert both
 
-
-## zaw
+## peco
 #
-if [ -f ${HOME}/.zsh/zaw/zaw.zsh ]
-then
-  source ${HOME}/.zsh/zaw/zaw.zsh
-  bindkey '^gz' zaw
-  bindkey '^gb' zaw-git-recent-all-branches
-  bindkey '^r'  zaw-history
-  bindkey '^gc' zaw-cdr
-fi
+for f (~/.zsh/peco-sources/*) source "${f}"
+
 
 ## load user .zshrc configuration file
 #

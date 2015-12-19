@@ -1,0 +1,11 @@
+# go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+# Ruby
+eval "$(rbenv init -)"
+
+# Node
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+export PATH="$HOME/bin:$PATH"
